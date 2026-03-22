@@ -1,25 +1,208 @@
-/* Keep the previous CSS, but add/update these parts: */
+/* --- VantageCore Labs: System Identity --- */
+:root {
+    --bg-dark: #0a0c0e;      /* Deep obsidian */
+    --bg-accent: #161a1d;    /* Charcoal secondary */
+    --accent-primary: #8e959b; /* Industrial Steel */
+    --accent-hover: #007aff;  /* Action Blue (Subtle) */
+    --text-main: #e0e0e0;    /* High-contrast off-white */
+    --text-dim: #94a3b8;     /* Muted slate for taglines */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Ambient Background --- */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, #161a1d 0%, #0a0c0e 100%);
+    z-index: -1;
+}
+
+/* --- Layout Container --- */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+/* --- Typography --- */
+header {
+    margin-bottom: 4rem;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
 
 .logo span {
-    color: #888; /* Changed accent to a more neutral industrial grey */
+    color: var(--accent-primary);
     font-weight: 300;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Service Grid --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .icon {
     font-size: 2rem;
-    margin-bottom: 1rem;
-    filter: grayscale(1); /* Keeps it looking professional and serious */
+    margin-bottom: 1.2rem;
+    display: block;
+    filter: saturate(0); /* Keeps icons professional/grayscale */
 }
 
-.cta-section {
-    margin-top: 4rem;
-    padding: 2rem;
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+/* --- Methodology Section --- */
+.methodology {
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 12px;
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 3rem 2rem;
+    margin: 4rem 0;
+    border-radius: 4px;
+}
+
+.methodology h2 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+}
+
+.methodology p {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    opacity: 0.9;
+}
+
+/* --- Call to Action --- */
+.cta-section {
+    padding: 2rem;
 }
 
 .cta-section p {
     font-size: 0.9rem;
+    margin-bottom: 2rem;
+    color: var(--text-dim);
     font-style: italic;
-    opacity: 0.7;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--accent-primary);
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: var(--text-main);
+    color: var(--bg-dark);
+    border-color: var(--text-main);
+    cursor: pointer;
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 600px) {
+    .container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1.6rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .methodology p {
+        font-size: 0.95rem;
+    }
 }
